@@ -13,7 +13,7 @@
                         </div>
                     </div>
                     <div class="infoArea">
-                        <h4>PS5 games 5-Pieces</h4>
+                        <h4>PS5 Games 5-Pieces</h4>
                         <span>ID: 123456789</span>
                         <h5>
                             {{ price }} ₺
@@ -61,6 +61,10 @@ export default {
                 "https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1622562512-ps5-games-gallery-7-1622562505.jpg?crop=1xw:1xh;center,top&resize=480:*",
                 "https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1622562592-ps5-games-gallery-6-1622562586.jpg?crop=1xw:1xh;center,top&resize=480:*",
                 "https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1622562705-ps5-games-gallery-11-1622562698.jpg?crop=1xw:1xh;center,top&resize=480:*",
+                "https://www.gamespot.com/a/uploads/square_medium/1591/15918215/3855315-ratchet.jpg",
+                "https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1622562618-ps5-games-gallery-8-1622562612.jpg?crop=1xw:1xh;center,top&resize=480:*",
+                "https://www.gamespot.com/a/uploads/square_medium/1595/15950357/3948335-eldenring.png",
+                "https://assets.sellers.loblaw.ca/products/all/1292/186052_1.jpg?size=480",
             ],
             count: 1,
             imgIndex: 0,
