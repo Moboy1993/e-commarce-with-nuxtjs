@@ -1,6 +1,7 @@
-const router = require('express');
+const router = require('express').Router();
 const res = require('express/lib/response');
 const Product = require("../models/product");
+const mongoose = require("mongoose");
 
 router.post("/product", async (req, res) => {
     try {
@@ -9,7 +10,8 @@ router.post("/product", async (req, res) => {
         product.stockNumber = req.body.stockNumber;
         product.description = req.body.description;
         product.photo = req.body.photo;
-        product.category = req.body.category;
+        product.mainCategory = req.body.mainCategory;
+        product.subCategory = req.body.subCategory;
         await product.save();
         res.json({
             success: true,
@@ -22,7 +24,7 @@ router.post("/product", async (req, res) => {
         })
     }
 });
-router.length("product/:id",async(req,res)=>{
+router.get("product/:id",async(req,res)=>{
     try {
         let product = await Product.findOne({_id:req.params.id}).exec();
         res.json({
