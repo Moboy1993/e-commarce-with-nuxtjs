@@ -7,6 +7,7 @@ router.post("/product", async (req, res) => {
     try {
         let product = new Product();
         product.title = req.body.title;
+        product.price = req.body.price;
         product.stockNumber = req.body.stockNumber;
         product.description = req.body.description;
         product.photo = req.body.photo;
@@ -15,7 +16,8 @@ router.post("/product", async (req, res) => {
         await product.save();
         res.json({
             success: true,
-            message: "product is saved succesfully"
+            message: "product is saved succesfully",
+            product: product
         });
     } catch (error) {
         res.status(500).json({
@@ -24,12 +26,12 @@ router.post("/product", async (req, res) => {
         })
     }
 });
-router.get("product/:id",async(req,res)=>{
+router.get("/product/:id", async (req, res) => {
     try {
-        let product = await Product.findOne({_id:req.params.id}).exec();
+        let product = await Product.findOne({ _id: req.params.id });
         res.json({
             success: true,
-            product:product,
+            product: product
         });
     } catch (error) {
         res.status(500).json({
@@ -37,6 +39,46 @@ router.get("product/:id",async(req,res)=>{
             message: error.message
         })
     }
-})
+});
 
-module.exports=router;
+router.put("/product/:id", async (req, res) => {
+    try {
+        let product = await Product.findOneAndUpdate({ _id: req.params.id }, {
+            $set: {
+                title: req.body.title,
+                price: req.body.price,
+                stockNumber: req.body.stockNumber,
+                description: req.body.description,
+                photo: req.body.photo,
+                mainCategory: req.body.mainCategory,
+                subCategory: req.body.subCategory,
+            }
+        }, { upsert: true });
+        res.json({
+            success: true,
+            updatedProduct: product
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        })
+    }
+});
+
+router.delete("/product/:id", async (req, res) => {
+    try {
+        let product = await Product.findOneAndDelete({ _id: req.params.id });
+        res.json({
+            success: true,
+            product: product
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        })
+    }
+});
+
+module.exports = router;
