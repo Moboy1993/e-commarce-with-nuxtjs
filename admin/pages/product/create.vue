@@ -57,7 +57,7 @@ export default {
                 { value: 'b', text: 'XBOX' },
                 { value: 'c', text: 'Nintendo' },
                 { value: 'd', text: 'PC' },
-            ]
+            ],
         }
     },
     computed: {
